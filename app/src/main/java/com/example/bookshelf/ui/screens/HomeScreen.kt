@@ -13,13 +13,12 @@ fun HomeScreen(
     marsUiState: String,
     modifier: Modifier = Modifier
 ) {
-    BooksScreen(marsUiState, modifier)
+    BooksScreen(marsUiState)
 }
 
 @Composable
 fun BooksScreen(
-    books: String,
-    modifier: Modifier = Modifier
+    books: String
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
