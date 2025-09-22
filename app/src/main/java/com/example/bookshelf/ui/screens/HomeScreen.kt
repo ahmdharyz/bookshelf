@@ -11,17 +11,18 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun HomeScreen(
     marsUiState: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
-    BooksScreen(marsUiState)
+    BooksScreen(marsUiState, modifier = modifier)
 }
 
 @Composable
 fun BooksScreen(
-    books: String
+    books: String,
+    modifier: Modifier
 ) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
         Text(text = books)
@@ -32,7 +33,7 @@ fun BooksScreen(
 @Composable
 fun HomeScreenPreview() {
     HomeScreen(
-        modifier = Modifier.fillMaxSize(),
-        marsUiState = "Success: Books retrieved"
+        marsUiState = "Success: Books retrieved",
+        modifier = Modifier.fillMaxSize()
     )
 }
