@@ -15,7 +15,7 @@ private val retrofit = Retrofit.Builder()
 
 interface BooksApiService {
     @GET("nPF9n0SwstMC")
-    fun getBooks(): String
+    suspend fun getBooks(): String
 }
 
 object BooksApi {
