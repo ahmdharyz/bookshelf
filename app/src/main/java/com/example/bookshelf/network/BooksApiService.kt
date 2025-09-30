@@ -6,7 +6,7 @@ import retrofit2.create
 import retrofit2.http.GET
 
 private const val BASE_URL =
-        "https://www.googleapis.com/books/v1/volumes"
+        "https://www.googleapis.com/books/v1/volumes/"
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
