@@ -7,10 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bookshelf.network.BooksApi
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 class BookshelfViewModel : ViewModel() {
 
-    var bookshelfUiState: String by mutableStateOf("")
+    sealed interface BookshelfUiState {
+        data class Success(val books: String): BookshelfUiState
+        object Loading: BookshelfUiState
+        object Error: BookshelfUiState
+    }
+
+    var bookshelfUiState: BookshelfUiState by mutableStateOf(BookshelfUiState.Loading)
+        private set
 
     init {
         getBooks()
@@ -18,8 +26,12 @@ class BookshelfViewModel : ViewModel() {
 
     private fun getBooks() {
         viewModelScope.launch {
-            val book = BooksApi.retrofitService.getBooks()
-            bookshelfUiState = book
+            bookshelfUiState = try {
+                val books = BooksApi.retrofitService.getBooks()
+                BookshelfUiState.Success(books)
+            } catch (e: IOException) {
+                BookshelfUiState.Error
+            }
         }
     }
 }

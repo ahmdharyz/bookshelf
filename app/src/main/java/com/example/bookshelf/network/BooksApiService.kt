@@ -4,6 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val BASE_URL =
         "https://www.googleapis.com/books/v1/volumes/"
@@ -14,7 +15,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface BooksApiService {
-    @GET("nPF9n0SwstMC")
+    @GET("?q=maldives+history")
     suspend fun getBooks(): String
 }
 
