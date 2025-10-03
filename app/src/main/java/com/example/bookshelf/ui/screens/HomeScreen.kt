@@ -65,7 +65,7 @@ fun Bookshelf(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        Text(text = books.toString())
+        Text(text = books)
     }
 }
 

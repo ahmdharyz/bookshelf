@@ -27,8 +27,8 @@ class BookshelfViewModel : ViewModel() {
     private fun getBooks() {
         viewModelScope.launch {
             bookshelfUiState = try {
-                val books = BooksApi.retrofitService.getBooks()
-                BookshelfUiState.Success(books)
+                val bookResults = BooksApi.retrofitService.getBooks()
+                BookshelfUiState.Success("Success: ${bookResults.items.size} books received")
             } catch (e: IOException) {
                 BookshelfUiState.Error
             }
